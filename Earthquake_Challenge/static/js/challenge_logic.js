@@ -164,9 +164,17 @@ d3.json().then(function(data) {
   // 7. Creating a GeoJSON layer with the retrieved data that adds a circle to the map 
 // sets the style of the circle, and displays the magnitude and location of the earthquake
 //  after the marker has been created and styled.
-L.geoJson(, {
-    
-});
+// Creating a GeoJSON layer with the retrieved data.
+L.geoJSON(data, {
+
+  // We turn each feature into a circleMarker on the map.
+  
+  pointToLayer: function(feature, latlng) {
+              console.log(data);
+              return L.circleMarker(latlng);
+          },
+      }).addTo(map);
+  });
 
 // 8. Add the major earthquakes layer to the map.
 majorEarthquakes.addTo(majorEQ);
